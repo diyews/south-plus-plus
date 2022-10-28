@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist-chrome",
+    "sourceMap": true,
+    "types": ["chrome"]
+  },
+  "include": [
+    "chrome/**/*.ts"
+  ]
+}

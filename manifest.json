@@ -1,0 +1,31 @@
+{
+  "name": "South Plus Plus",
+  "description": "South-Plus 插件，类似Soul++ ",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "dist/index.html"
+  },
+  "options_page": "dist/index.html#/options",
+  "content_scripts": [
+    {
+      "matches": ["https://www.south-plus.net/read.php*"],
+      "js": ["dist-chrome/contents/hide_mark.js"]
+    },
+    {
+      "matches": ["https://www.south-plus.net/thread.php*"],
+      "js": ["dist-chrome/contents/mark_new.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
