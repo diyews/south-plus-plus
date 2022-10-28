@@ -72,8 +72,8 @@ function isSameDate(a, pDate) {
   );
 }
 
-chrome.storage.local.get('markNew', items => {
-  if (items?.markNew !== false) {
+chrome.storage.local.get('config', items => {
+  if (items.config.markNew !== false) {
     processList();
   }
 })

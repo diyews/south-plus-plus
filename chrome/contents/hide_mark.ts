@@ -53,8 +53,8 @@ function hideMark() {
     });
 }
 
-chrome.storage.local.get('hideMark', items => {
-  if (items?.hideMark !== false) {
+chrome.storage.local.get('config', items => {
+  if (items.config.hideMark !== false) {
     hideMark();
 
     const observer = new MutationObserver(function (mutationList, observer) {

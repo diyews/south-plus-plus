@@ -12,16 +12,26 @@
     "storage"
   ],
   "action": {
-    "default_popup": "dist/index.html"
+    "default_popup": "dist/index.html#/popup"
   },
   "options_page": "dist/index.html#/options",
   "content_scripts": [
     {
-      "matches": ["https://www.south-plus.net/read.php*"],
+      "matches": [
+        "https://*.east-plus.net/read.php*",
+        "https://*.spring-plus.net/read.php*",
+        "https://*.north-plus.net/read.php*",
+        "https://*.south-plus.net/read.php*"
+      ],
       "js": ["dist-chrome/contents/hide_mark.js"]
     },
     {
-      "matches": ["https://www.south-plus.net/thread.php*"],
+      "matches": [
+        "https://*.east-plus.net/thread.php*",
+        "https://*.spring-plus.net/thread.php*",
+        "https://*.north-plus.net/thread.php*",
+        "https://*.south-plus.net/thread.php*"
+      ],
       "js": ["dist-chrome/contents/mark_new.js"]
     }
   ],

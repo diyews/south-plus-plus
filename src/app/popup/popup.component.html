@@ -1,0 +1,23 @@
+<div style="width: 300px;">
+
+  <nz-card [nzBodyStyle]="{ padding: '12px' }" style="width: 100%;">
+    <nz-card-tab>
+      <nz-tabset nzSize="default" [(nzSelectedIndex)]="selectedIndex">
+        <nz-tab nzTitle="配置"></nz-tab>
+      </nz-tabset>
+    </nz-card-tab>
+    <ng-container [ngSwitch]="selectedIndex">
+      <nz-list *ngSwitchCase="0">
+        <nz-list-item *ngFor="let item of list">
+          <span>{{ item.title }}</span>
+          <nz-switch [(ngModel)]="item.value" (ngModelChange)="onSwitchChanged($event, item.key)"></nz-switch>
+        </nz-list-item>
+        <nz-list-footer style="padding-bottom: 0;">
+          <a nz-button nzType="link" style="padding: 0;" (click)="openOptionPage()">
+            打开选项页 <span nz-icon nzType="arrow-right" nzTheme="outline"></span>
+          </a>
+        </nz-list-footer>
+      </nz-list>
+    </ng-container>
+  </nz-card>
+</div>
