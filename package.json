@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^14.2.8",
     "@angular/platform-browser-dynamic": "^14.2.8",
     "@angular/router": "^14.2.8",
+    "ng-zorro-antd": "^14.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
@@ -46,7 +47,7 @@
     "ts-loader": "^8.2.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.6.4",
+    "typescript": "~4.7.2",
     "webpack-cli": "^4.10.0",
     "webpack-merge": "^5.8.0"
   }
