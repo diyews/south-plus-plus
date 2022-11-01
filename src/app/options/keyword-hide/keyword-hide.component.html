@@ -1,0 +1,29 @@
+<nz-collapse>
+  <nz-collapse-panel nzHeader="开关" [nzActive]="true">
+    <div nz-row>
+      <div nz-col="6" class="d-flex align-items-center">
+        右键菜单添加关键字
+        <nz-switch [(ngModel)]="contextAdd" nzDisabled style="margin-left: 8px;"></nz-switch>
+      </div>
+    </div>
+  </nz-collapse-panel>
+
+  <nz-collapse-panel nzHeader="关键字" [nzActive]="true" [nzExtra]="clearAllExtraTpl">
+    <ng-template #clearAllExtraTpl>
+<!--      <a nz-button nzType="link" nzSize="small">清除所有</a>-->
+    </ng-template>
+
+    <nz-tag *ngFor="let item of keywords;index as index" nzMode="closeable"
+            (nzOnClose)="removeKeyword(item, index)"
+            style="margin-bottom: 8px;">{{ item }}</nz-tag>
+
+    <textarea rows="3" nz-input placeholder="输入后回车添加，英文逗号( , ) 作为分隔符"
+              [(ngModel)]="inputText"
+              (keydown.enter)="onAdd($event)"
+              style="margin-top: 12px;margin-bottom: 8px;"></textarea>
+    <div class="d-flex justify-content-end">
+      <button nz-button nzType="default" (click)="import()" style="margin-right: 8px;">旧版导入</button>
+      <button nz-button nzType="primary" (click)="onAdd()">添加</button>
+    </div>
+  </nz-collapse-panel>
+</nz-collapse>

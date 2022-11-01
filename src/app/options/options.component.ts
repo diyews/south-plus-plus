@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./options.component.less']
 })
 export class OptionsComponent implements OnInit {
+  isCollapsed = false;
 
   constructor() { }
 

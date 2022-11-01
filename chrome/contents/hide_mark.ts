@@ -1,3 +1,5 @@
+let keywords = [];
+
 function hideMark() {
   document.querySelectorAll<HTMLElement>('.tpc_content .f14')
     .forEach((el, index) => {
@@ -9,7 +11,7 @@ function hideMark() {
 
       if (innerText) {
         // 这里可以自己添加文字屏蔽
-        const words = ['mark', 'makr', 'mk', 'make', '马克', '马可', '马克吐温', '码住', '马', '马住', '插眼', '顶'];
+        const words = keywords;
         if (words.indexOf(innerText.toLocaleLowerCase()) !== -1) {
           floor.style.display = 'none'
         }
@@ -55,6 +57,7 @@ function hideMark() {
 
 chrome.storage.local.get('config', items => {
   if (items.config.hideMark !== false) {
+    keywords = items.config.hideMarkKeywords;
     hideMark();
 
     const observer = new MutationObserver(function (mutationList, observer) {

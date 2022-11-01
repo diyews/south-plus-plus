@@ -7,6 +7,8 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { ModalBaseComponent } from './components/modal-base/modal-base.component';
 
 
 const modules = [
@@ -18,10 +20,13 @@ const modules = [
   NzSwitchModule,
   NzButtonModule,
   NzIconModule,
+  NzMessageModule,
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ModalBaseComponent
+  ],
   imports: [
     CommonModule,
 
