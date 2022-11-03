@@ -14,6 +14,7 @@ import { LegacyKeywordModalComponent } from './keyword-hide/legacy-keyword-modal
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { ThreadMarkComponent } from './thread-mark/thread-mark.component';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { ThreadMarkComponent } from './thread-mark/thread-mark.component';
     NzTagModule,
     NzInputModule,
     NzModalModule,
+    NzFormModule,
   ]
 })
 export class OptionsModule { }

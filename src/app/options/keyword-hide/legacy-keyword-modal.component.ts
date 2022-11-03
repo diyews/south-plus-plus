@@ -4,7 +4,10 @@ import { ModalBaseComponent } from '../../shared/components/modal-base/modal-bas
 @Component({
   selector: 'app-legacy-keyword-modal',
   template: `
-    <textarea nz-input [(ngModel)]="inputText" (ngModelChange)="onChange()" cols="30" rows="5"></textarea>
+    <h4>把之前那行代码复制到输入框，例如：</h4>
+    <h4>const words = ['mark', '顶'];</h4>
+
+    <textarea nz-input [(ngModel)]="inputText" (ngModelChange)="onChange()" cols="30" rows="5" placeholder="油猴代码"></textarea>
 
     <h4 style="margin-top: 12px;">预览：</h4>
     <textarea nz-input [(ngModel)]="inputTextPreview" cols="30" rows="5"></textarea>
@@ -25,7 +28,7 @@ export class LegacyKeywordModalComponent extends ModalBaseComponent {
   ngOnInit(): void {
     this.modalConfig = {
       nzWidth: 520,
-      nzTitle: '旧版关键字导入',
+      nzTitle: '油猴脚本关键字导入',
     }
     super.ngOnInit();
   }

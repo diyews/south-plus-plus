@@ -15,13 +15,13 @@ function appendCommentAndView(tr) {
 
   (function (s8) {
     const count = +s8?.innerText || 0;
-    if (count < 10) return;
+    if (count < config.moveCommentViewCount1) return;
 
-    if (count < 30) {
+    if (count < config.moveCommentViewCount2) {
       s8.style.color = '#00c000';
     }
 
-    if (count >= 30) {
+    if (count >= config.moveCommentViewCount2) {
       s8.style.color = '#c00000';
     }
   })(span.querySelector('.s8'));
@@ -29,12 +29,10 @@ function appendCommentAndView(tr) {
   titleA.appendChild(span);
 }
 
-function processList() {
+function processListForMarkNew() {
   const trList = document.querySelectorAll('tr.t_one');
 
   trList.forEach(tr => {
-    appendCommentAndView(tr);
-
     const date = tr.querySelector<HTMLElement>('.f10.gray2')?.innerText;
     if (!date) { return; }
     const isToday = isSameDate(new Date(date), new Date());
@@ -64,6 +62,15 @@ function processList() {
   });
 }
 
+function processListForMoveCommentView() {
+  const trList = document.querySelectorAll('tr.t_one');
+
+  trList.forEach(tr => {
+    appendCommentAndView(tr);
+  });
+
+}
+
 function isSameDate(a, pDate) {
   return (
     a.getFullYear() === pDate.getFullYear() &&
@@ -72,8 +79,15 @@ function isSameDate(a, pDate) {
   );
 }
 
+let config;
+
 chrome.storage.local.get('config', items => {
-  if (items.config.markNew !== false) {
-    processList();
+  config = items.config;
+  if (config.markNew !== false) {
+    processListForMarkNew();
+  }
+
+  if (config.moveCommentView !== false) {
+    processListForMoveCommentView();
   }
 })

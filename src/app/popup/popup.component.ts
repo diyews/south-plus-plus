@@ -12,6 +12,7 @@ export class PopupComponent implements OnInit {
   list = [
     { title: '移除Mark 及纯表情楼层', key: 'hideMark', value: true, },
     { title: '标记新帖', key: 'markNew', value: true, },
+    { title: '帖子标题显示评论数', key: 'moveCommentView', value: true, },
   ]
 
   constructor(private storageService: StorageService,
@@ -21,6 +22,8 @@ export class PopupComponent implements OnInit {
         Object.keys(config)
           .forEach(key => {
             const hit = this.list.find(o => o.key === key);
+            if (!hit) { return; }
+
             hit.value = config[key];
           })
       })

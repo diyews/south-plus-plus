@@ -1,1 +1,20 @@
-<p>thread-mark works!</p>
+<form nz-form [formGroup]="formGroup">
+  <nz-collapse>
+    <nz-collapse-panel nzHeader="评论数高亮" [nzActive]="true">
+      <div nz-row>
+        <div nz-col="6" class="">
+          <div>
+            评论超过
+            <nz-input-number formControlName="moveCommentViewCount1" [nzMin]="1" style="width: 72px;margin: 0 4px;"></nz-input-number>
+            显示 【<span style="color: #00c000;">绿色</span>/人气】
+          </div>
+          <div style="margin-top: 12px;">
+            评论超过
+            <nz-input-number formControlName="moveCommentViewCount2" [nzMin]="1" style="width: 72px;margin: 0 4px;"></nz-input-number>
+            显示 【<span style="color: #c00000;">红色</span>/人气】
+          </div>
+        </div>
+      </div>
+    </nz-collapse-panel>
+  </nz-collapse>
+</form>
