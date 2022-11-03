@@ -55,9 +55,9 @@ function hideMark() {
     });
 }
 
-chrome.storage.local.get('config', items => {
+chrome.storage.sync.get(['config', 'hideMarkKeywords'], items => {
   if (items.config.hideMark !== false) {
-    keywords = items.config.hideMarkKeywords;
+    keywords = items.hideMarkKeywords;
     hideMark();
 
     const observer = new MutationObserver(function (mutationList, observer) {

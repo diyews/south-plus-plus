@@ -9,7 +9,7 @@ export class StorageService {
 
   getConfig(): Promise<any> {
     return new Promise(resolve => {
-      chrome.storage.local.get('config', items => {
+      chrome.storage.sync.get('config', items => {
         resolve(items.config);
       });
     });
@@ -18,7 +18,7 @@ export class StorageService {
   setConfig(value): Promise<any> {
     return new Promise(async resolve => {
       const config = await this.getConfig();
-      chrome.storage.local.set({ config: { ...config, ...value } }, () => resolve(true));
+      chrome.storage.sync.set({ config: { ...config, ...value } }, () => resolve(true));
     })
   }
 }

@@ -19,10 +19,11 @@ export class KeywordHideComponent implements OnInit {
               private nzMessageService: NzMessageService,
               private nzModalService: NzModalService,
               ) {
-    this.storageService.getConfig()
-      .then(config => {
-        this.keywords = config.hideMarkKeywords;
+    chrome.storage.sync.get('hideMarkKeywords', items => {
+      this.ngZone.run(() => {
+        this.keywords = items.hideMarkKeywords;
       })
+    })
   }
 
   ngOnInit(): void {
@@ -64,9 +65,11 @@ export class KeywordHideComponent implements OnInit {
   }
 
   update(newKeywords: string[] = this.keywords) {
-    return this.storageService.setConfig({ hideMarkKeywords: newKeywords})
-      .then(() => {
+    return new Promise(resolve => {
+      chrome.storage.sync.set({ hideMarkKeywords: newKeywords}, () => {
         this.keywords = newKeywords;
+        resolve(true);
       })
+    })
   }
 }

@@ -81,7 +81,7 @@ function isSameDate(a, pDate) {
 
 let config;
 
-chrome.storage.local.get('config', items => {
+chrome.storage.sync.get('config', items => {
   config = items.config;
   if (config.markNew !== false) {
     processListForMarkNew();

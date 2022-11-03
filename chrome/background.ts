@@ -4,18 +4,25 @@ const defaultConfig = {
   moveCommentView: true,
   moveCommentViewCount1: 10, // 评论数高亮第一个阈值
   moveCommentViewCount2: 30, // 评论数高亮第二个阈值
-  hideMarkKeywords: ['mark', 'makr', 'mk', 'make', '马克', '马可', '马克吐温', '码住', '马', '马住', '插眼', '顶'],
 }
+const hideMarkKeywordsDefault = ['mark', 'makr', 'mk', 'make', '马克', '马可', '马克吐温', '码住', '马', '马住', '插眼', '顶'];
 
-chrome.runtime.onInstalled.addListener(details => {
+
+  chrome.runtime.onInstalled.addListener(details => {
   switch (details.reason) {
     case 'install':
     case 'update':
-      chrome.storage.local.get('config', items => {
+      chrome.storage.sync.get(['config', 'hideMarkKeywords'], items => {
         const config = items.config || {};
-        chrome.storage.local.set({
-          config: { ...defaultConfig, ...config }
-        });
+        /* 基本配置 */
+        const data: { config: any; hideMarkKeywords?: string[]; } = {
+          config: { ...defaultConfig, ...config },
+        };
+        /* 关键字配置 */
+        if (!items.hideMarkKeywords) {
+          data.hideMarkKeywords = hideMarkKeywordsDefault;
+        }
+        chrome.storage.sync.set(data);
       });
       break;
     default:

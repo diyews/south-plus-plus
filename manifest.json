@@ -37,5 +37,6 @@
   ],
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "homepage_url": "https://github.com/diyews/south-plus-plus"
 }
