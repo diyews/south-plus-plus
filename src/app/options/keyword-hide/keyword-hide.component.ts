@@ -3,6 +3,19 @@ import { StorageService } from '../../services/storage.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { LegacyKeywordModalComponent } from './legacy-keyword-modal.component';
+import { NzPresetColor, presetColors } from 'ng-zorro-antd/core/color';
+
+const hashCode = (str: string): number => {
+  let hash = 0,
+    i, chr;
+  if (str.length === 0) return hash;
+  for (i = 0; i < str.length; i++) {
+    chr = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+}
 
 @Component({
   selector: 'app-keyword-hide',
@@ -27,6 +40,11 @@ export class KeywordHideComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  getColorFromKeyword(keyword: string): NzPresetColor {
+    const hash = hashCode(keyword)
+    return presetColors[hash % presetColors.length];
   }
 
   removeKeyword($event, index) {

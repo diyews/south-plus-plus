@@ -13,9 +13,10 @@
 <!--      <a nz-button nzType="link" nzSize="small">清除所有</a>-->
     </ng-template>
 
-    <nz-tag *ngFor="let item of keywords;index as index" nzMode="closeable"
-            (nzOnClose)="removeKeyword(item, index)"
-            style="margin-bottom: 8px;">{{ item }}</nz-tag>
+    <nz-tag *ngFor="let keyword of keywords;index as index" nzMode="closeable"
+            (nzOnClose)="removeKeyword(keyword, index)"
+            [nzColor]="getColorFromKeyword(keyword)"
+            style="margin-bottom: 8px;">{{ keyword }}</nz-tag>
 
     <textarea rows="3" nz-input placeholder="输入后回车添加，英文逗号( , ) 作为分隔符"
               [(ngModel)]="inputText"
