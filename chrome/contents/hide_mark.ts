@@ -61,8 +61,12 @@ function addAddKeywordDropdownMenu(floor: HTMLDivElement, keyword: string) {
   const dropdown = floor.querySelector('.fr .dropdown-content');
   if (!dropdown || !keyword) { return; }
 
+  /* 已经添加过 */
+  if (dropdown.querySelector('.hide-mark')) { return; }
+
   const aMenu = document.createElement('a') as HTMLAnchorElement;
   aMenu.href = 'javascript:void(0)'
+  aMenu.classList.add('hide-mark')
   aMenu.innerText = `屏蔽内容`
   aMenu.title = keyword;
   aMenu.onclick = () => {
