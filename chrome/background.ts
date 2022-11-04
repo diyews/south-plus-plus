@@ -8,7 +8,7 @@ const defaultConfig = {
 const hideMarkKeywordsDefault = ['mark', 'makr', 'mk', 'make', '马克', '马可', '马克吐温', '码住', '马', '马住', '插眼', '顶'];
 
 
-  chrome.runtime.onInstalled.addListener(details => {
+chrome.runtime.onInstalled.addListener(details => {
   switch (details.reason) {
     case 'install':
     case 'update':
