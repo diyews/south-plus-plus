@@ -1,13 +1,4 @@
 <nz-collapse>
-  <nz-collapse-panel nzHeader="开关" [nzActive]="true">
-    <div nz-row>
-      <div nz-col="6" class="d-flex align-items-center">
-        右键菜单添加关键字
-        <nz-switch [(ngModel)]="contextAdd" nzDisabled style="margin-left: 8px;"></nz-switch>
-      </div>
-    </div>
-  </nz-collapse-panel>
-
   <nz-collapse-panel nzHeader="关键字" [nzActive]="true" [nzExtra]="clearAllExtraTpl">
     <ng-template #clearAllExtraTpl>
 <!--      <a nz-button nzType="link" nzSize="small">清除所有</a>-->

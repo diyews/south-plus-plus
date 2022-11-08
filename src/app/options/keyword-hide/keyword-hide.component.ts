@@ -24,7 +24,6 @@ const hashCode = (str: string): number => {
 })
 export class KeywordHideComponent implements OnInit {
   inputText = '';
-  contextAdd = false;
   keywords = [];
 
   constructor(private ngZone: NgZone,
