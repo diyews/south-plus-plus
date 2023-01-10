@@ -7,6 +7,10 @@ const defaultConfig = {
 }
 const hideMarkKeywordsDefault = ['mark', 'makr', 'mk', 'make', '马克', '马可', '马克吐温', '码住', '马', '马住', '插眼', '顶'];
 
+const defaultConfigLocal = {
+  markRead: true,
+  markReadList: [],
+}
 
 chrome.runtime.onInstalled.addListener(details => {
   switch (details.reason) {
@@ -23,6 +27,15 @@ chrome.runtime.onInstalled.addListener(details => {
           data.hideMarkKeywords = hideMarkKeywordsDefault;
         }
         chrome.storage.sync.set(data);
+      });
+
+      chrome.storage.local.get(['configLocal'], items => {
+        const configLocal = items.configLocal || {};
+        const data: { configLocal: any } = {
+          configLocal: { ...defaultConfigLocal, ...configLocal },
+        };
+
+        chrome.storage.local.set(data);
       });
       break;
     default:

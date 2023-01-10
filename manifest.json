@@ -33,6 +33,15 @@
         "https://*.south-plus.net/thread.php*"
       ],
       "js": ["dist-chrome/contents/mark_new.js"]
+    },
+    {
+      "matches": [
+        "https://*.east-plus.net/thread.php*",
+        "https://*.spring-plus.net/thread.php*",
+        "https://*.north-plus.net/thread.php*",
+        "https://*.south-plus.net/thread.php*"
+      ],
+      "js": ["dist-chrome/contents/mark_read.js"]
     }
   ],
   "background": {
